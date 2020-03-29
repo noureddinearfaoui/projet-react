@@ -1,4 +1,4 @@
-const User = [
+const users = [
     {
       id: "1",
       nom: "Learn html",
@@ -42,7 +42,7 @@ const User = [
  export const authentification = async (email,password)=>
  {      
   return new Promise(function (resolve, reject) {
-          let userFind = User.find(user => user.email===email&&user.password===password)
+          let userFind = users.find(user => user.email===email&&user.password===password)
       if (userFind === undefined) {
         reject("votre email et votre password sont incorrecte");
         }
@@ -66,8 +66,8 @@ export const inscription = async (nom,prenom,dateN,
 {
   
     return new Promise(function(resolve){ 
-      User.push({
-        id: User.length+1,
+      users.push({
+        id: users.length+1,
         nom: nom,
         prenom: prenom,
         email: email,
@@ -78,7 +78,7 @@ export const inscription = async (nom,prenom,dateN,
         role:"user",
         banni:false
       });
-      console.log(User);
+      console.log(users);
       resolve("l'opération bien réussi")
     })
 
