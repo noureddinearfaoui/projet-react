@@ -34,7 +34,41 @@
     font-size: 13px;
     
 }
+.rowElement
+{
+    border-color: #e9e9e9;
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    color: #566787;
+    background: #fff;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 13px;
+    
+}
 .headerContenu p{
     font-size: 20px;
     font-family: Georgia, serif;
+}
+.icons
+{
+    font-size: 25px;
+}
+.iconsOpr
+{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-right: 1px;
+}
+.iconEdit
+{
+    color:#FFC107;
+}
+.iconDelete
+{
+    color:#F44336;
 }

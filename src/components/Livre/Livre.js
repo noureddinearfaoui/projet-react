@@ -1,6 +1,7 @@
 import React from 'react';
 import './Livre.css'
-import { IoIosAddCircle,IoIosArrowDropupCircle } from 'react-icons/io';
+import { IoIosAddCircle,IoIosArrowDropupCircle ,
+         IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
 
 
 
@@ -23,12 +24,22 @@ function Livre({livre}) {
         </div>  
         <div className="contenu">
             <div className="headerContenu">
-              < p>Name</p>
-              < p>Name</p>
-              < p>Name</p>
-              < p>Name</p>
-              
-
+              <p>Name</p>
+              <p>Name</p>
+              <p>Name</p>
+              <p>Name</p>
+            </div>
+            <div className="BodyContenu">
+              <div className="rowElement">
+                <p>Name</p>
+                <p>Name</p>
+                <p>Name</p>
+                <p className="iconsOpr"><span className="icons"><IoMdColorWand/></span>
+                                        <span data-original-title="Edit" className="icons iconEdit"><IoIosBrush/></span>
+                                        <span className="icons iconDelete"><IoMdTrash/></span>
+                                        
+                </p>
+              </div>
             </div>
          
         </div>
