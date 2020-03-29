@@ -1,20 +1,20 @@
 import React from 'react';
-import './Livre.css'
+import './Livreliste.css'
 import { IoIosAddCircle,IoIosArrowDropupCircle ,
          IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
 
 
 
-function Livre({livre}) {
+function Livreliste({livre}) {
   return (
-    <div className="Livre">
-        <div class="table-title">
-                <div class="row">
-                    <div class="col-sm-6">
+    <div className="Livreliste">
+        <div className="table-title">
+                <div className="row">
+                    <div className="col-sm-6">
 						          <h2>Manage <b>Employees</b></h2>
 					      </div>
-					      <div class="col-sm-6 ">
-                  <div class="row">
+					      <div className="col-sm-6 ">
+                  <div className="row">
                     <button id="btnshow" className="btn btn-danger col-lg-4 "><IoIosArrowDropupCircle/>show List</button>
                     <br/>
                     <button className="btn btn-success col-lg-6"><IoIosAddCircle/>Ajouter un nouveau livre</button>
@@ -48,4 +48,4 @@ function Livre({livre}) {
   );
 }
 
-export default Livre;
+export default Livreliste;
