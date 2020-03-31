@@ -1,19 +1,25 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './Livreliste.css'
 import { IoIosArrowDropupCircle} from 'react-icons/io';
 import LivreForm from '../LivreForm/LivreForm'
 import LivrElement from '../livreElement/LivreElement'
+import { ToastsContainer,ToastsStore} from 'react-toasts';
 
 
 
 
 
 function Livreliste({addLivre,livres,deleteLivre,updateLivre}) {
- 
+  const toast = () => ToastsStore.success("Hey, Success!");
+  
+  
  
 
   return (
     <div className="Livreliste">
+              
+
+        <ToastsContainer store={ToastsStore}/>
         <div className="table-title">
                 <div className="row">
                     <div className="col-sm-6">
@@ -25,7 +31,7 @@ function Livreliste({addLivre,livres,deleteLivre,updateLivre}) {
                       <button id="btnshow" className="btn btn-danger"><IoIosArrowDropupCircle/></button>
                     </div>
                     <div className = "col-lg-3 col-md-3">
-                       <LivreForm addLivre={addLivre} />                
+                       <LivreForm addLivre={addLivre} toast={toast} />                
                     </div>
                    </div>
                 </div>
@@ -47,7 +53,8 @@ function Livreliste({addLivre,livres,deleteLivre,updateLivre}) {
                 edition={livre.edition}
                 deleteLivre={deleteLivre}
                 nbExemplaires={livre.nombreExemplaires}
-                updateLivre={updateLivre}>
+                updateLivre={updateLivre}
+                toast={toast}>
                 
               </LivrElement>))}
             </div>

@@ -3,6 +3,9 @@ import './LivreElement.css'
 import {IoIosAlert,IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
  import { Button,Modal } from 'react-bootstrap';
  import { useForm } from 'react-hook-form'
+ 
+ 
+
   
 
 
@@ -12,22 +15,27 @@ import {IoIosAlert,IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
 
 function LivreElement({libelle,auteur,
                        edition,id,deleteLivre,
-                       nbExemplaires,updateLivre}) {
-
+                       nbExemplaires,updateLivre,toast}) {
+   
   const [libelleToUpdate, setLibelle] = useState(libelle)
   const [auteursToUpdate, setAuteur] = useState(auteur)
   const [nbExemplairesToUpdate, setnbExemplaire] = useState(nbExemplaires)
   const [editionToUpdate, setEdition] = useState(edition)
   const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => { 
+      
         updateLivre((id,libelleToUpdate,
                      auteursToUpdate,editionToUpdate,
                      nbExemplairesToUpdate));
-        setShow(false);
+                     
+        setShowUpdate(false);
+        toast();
+       
           }
 
   
     const [show, setShow] = useState(false);
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -35,13 +43,19 @@ function LivreElement({libelle,auteur,
     const handleCloseUpdate = () => setShowUpdate(false);
     const handleShowUpdate = () => setShowUpdate(true);
     const supprimerLivre =  ()=> {
-    deleteLivre(id);
-    setShowUpdate(false);
+      
+   deleteLivre(id);
+    setShow(false);
+    toast();
+    
   };
+  //if(showToast)
+    //toast();
   
 
   return (
     <div className="LivreElement">
+        
         <div className="rowElement">
                 <p>{libelleToUpdate}</p>
                 <p>{auteursToUpdate}</p>
@@ -118,6 +132,9 @@ function LivreElement({libelle,auteur,
                           </Button>
                 </Modal.Footer>
             </Modal>
+            </div>
+            <div>
+              
             </div>
     </div>
   );

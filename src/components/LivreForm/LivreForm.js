@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 
 import './LivreForm.css'
 
-function LivreForm({addLivre}){
+function LivreForm({addLivre,toast}){
     const [show, setShow] = useState(false);
     const [libelle, setLibelle] = useState("")
     const [auteur, setAuteur] = useState("")
@@ -23,6 +23,7 @@ function LivreForm({addLivre}){
         addLivre(libelle,auteur,edition,nbExemplaire);
         
         setShow(false);
+        toast();
           }
           
     return(
