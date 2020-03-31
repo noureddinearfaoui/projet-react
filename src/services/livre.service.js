@@ -1,5 +1,3 @@
-import { func } from "prop-types"
-
 const livres = [
     {
       id: "1",
@@ -8,7 +6,15 @@ const livres = [
       edition: "noureddine",
       nombreExemplaires:4,
     },
+    
     {
+        id: "1",
+        libelle: "Learn html",
+        auteur: 60,
+        edition: "noureddine",
+        nombreExemplaires:4,
+      },
+      {
         id: "1",
         libelle: "Learn html",
         auteur: 60,
@@ -31,7 +37,7 @@ const livres = [
       })
 
   }
-  export const findAllLivre=async()=>{
+  export const findAllLivre=()=>{
    
     
     return new Promise(function(resolve,reject){
@@ -52,4 +58,23 @@ export const edit=async(livreId,libelle,auteur,nombreExemplaires)=>{
 
 
     })
+}
+export const add=async(libelle,auteur,edition,nombreExemplaires)=>{
+   
+    
+  return new Promise(function(resolve,reject){
+    const newLivre = {id:livres.length+1,
+      libelle :libelle,
+      auteur : auteur,
+      edition:edition,
+      nombreExemplaires:nombreExemplaires
+
+       
+ }
+      livres.push(newLivre);
+      resolve(newLivre);
+      
+
+
+  })
 }

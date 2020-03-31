@@ -2,7 +2,7 @@ import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Menu from './components/menu/Menu'
-import Livre from './components/livreliste/Livreliste'
+
 import SignIn from './components/signin/Signin'
 import SignUp from './components/signup/Signup'
 import Livres from './components/livres/Livres'
@@ -27,10 +27,11 @@ function App() {
           <Menu></Menu>
           </Route>
           <Route path="/Livre">
-            <Livre />
+            
           </Route>
           <Route exact path="/">
           <Menu></Menu>
+          
           <Livres></Livres>
          
           </Route>
