@@ -18,10 +18,15 @@ function Livres(){
 
   }
   const updateLivre = (id,libelle,auteur,edition,nombreExemplaires) => {
-    const newLivres = livres.map(livre =>
-      livre.id === id ? { libelle,auteur,edition,nombreExemplaires } : livre
+    console.log(libelle+"lib2")
+    const newLivres = livres.map((livre) =>
+      livre.id === id ? { id,libelle,auteur,edition,nombreExemplaires } : livre
     )
+    setLivres([])
     setLivres(newLivres)
+    
+    livres.map(livre=>console.log(newLivres))
+    livres.map(livre=>console.log(livres))
   }
   const deleteLivre = id => {
     const newLivres = livres.filter(livre => livre.id !== id)
