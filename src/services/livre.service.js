@@ -40,11 +40,7 @@ const livres = [
   export const findAllLivre=()=>{
    
     
-    return new Promise(function(resolve,reject){
-      resolve(livres)
-
-
-    })
+    return livres;
 }
 export const edit=async(livreId,libelle,auteur,nombreExemplaires)=>{
    

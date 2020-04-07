@@ -8,7 +8,7 @@ const users = [
       adresse: "beginner",
       tel: "05/04/2020",
       dateNaissance:"05/04/2200",
-      role:"user",
+      role:"admin",
       banni:false
     },
     {

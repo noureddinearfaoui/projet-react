@@ -9,9 +9,8 @@ import { ToastsContainer,ToastsStore} from 'react-toasts';
 
 
 
-function Livreliste({addLivre,livres,deleteLivre,
-                     updateLivre,fetchEmpruntsUser,
-                     disponibilteLivre,emprunterLivre}) {
+function Livreliste({livres,
+                      emprunts,setLivres}) {
   const toast = (msg=null) =>
     {
           if(msg===null)
@@ -50,7 +49,8 @@ function Livreliste({addLivre,livres,deleteLivre,
                     </div>
                     
                     <div className = "col-lg-3 col-md-3">
-                       <LivreForm addLivre={addLivre} toast={toast} />                
+                       <LivreForm livres={livres}
+                               setLivres={setLivres} toast={toast} />                
                     </div>
                    </div>
                 </div>
@@ -70,14 +70,14 @@ function Livreliste({addLivre,livres,deleteLivre,
                 libelle = {livre.libelle}
                 auteur={livre.auteur}
                 edition={livre.edition}
-                deleteLivre={deleteLivre}
                 nbExemplaires={livre.nombreExemplaires}
-                updateLivre={updateLivre}
                 toast={toast}
                 toastError={toastError}
-                fetchEmpruntsUser={fetchEmpruntsUser}
-                emprunterLivre={emprunterLivre}
-                disponibilteLivre={disponibilteLivre}>
+                emprunts={emprunts}
+                 livres={livres}
+                 setLivres={setLivres}
+               >
+                  
                 
               </LivrElement>))}
             </div>

@@ -7,8 +7,15 @@ import { Button,Modal } from 'react-bootstrap';
 
 
 
-function ModalDeleteLivre({deleteLivre,toast,id}) {
+function ModalDeleteLivre({toast,id,livres,setLivres}) {
   
+  const deleteLivre = id => {
+    const newLivres = livres.filter(livre => livre.id !== id)
+    setLivres(newLivres);
+
+    
+    livres.map(livre => (console.log(livre)))
+  }
   
     const [show, setShow] = useState(false);
     

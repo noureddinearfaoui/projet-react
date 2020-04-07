@@ -7,7 +7,23 @@ import { useForm } from 'react-hook-form'
 
 import './LivreForm.css'
 
-function LivreForm({addLivre,toast}){
+function LivreForm({livres,setLivres,toast}){
+    const addLivre =  (libelle,auteur,edition,nombreExemplaires) =>{
+      
+       
+        setLivres(previousTasks => [
+          ...previousTasks,
+          {id:previousTasks.length+1,
+            libelle :libelle,
+            auteur : auteur,
+            edition:edition,
+            nombreExemplaires:nombreExemplaires
+      
+             
+       }
+        ])
+        
+    }
     const [show, setShow] = useState(false);
     const [libelle, setLibelle] = useState("")
     const [auteur, setAuteur] = useState("")

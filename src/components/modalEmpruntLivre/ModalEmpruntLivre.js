@@ -11,8 +11,7 @@ import { IoIosAlert } from 'react-icons/io';
 
 function ModalEmpruntLivre({libelle,auteur,
                       edition,nbExemplaires,id,toast,
-                      toastError,fetchEmpruntsUser,
-                      disponibilteLivre,emprunterLivre}) {
+                      toastError,emprunts}) {
 
      const [dateDebut, setDateDebut] = useState("")
      const [dateFin, setDateFin] = useState("")
@@ -22,13 +21,45 @@ function ModalEmpruntLivre({libelle,auteur,
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const emprunter = async()=>
-    {  
-       
-
+    const emprunterLivre = async (idUser,idLivre,dateDebut,dateFin) =>{
+      
+   
+      alert("lll")
+      emprunts.push({id:emprunts.length+1,
+        idUser,
+        idLivre,
+        dateDebut,
+        dateFin,
+        remettre:false
+      
+  
+         
+   })
+     
+  
+  
+      emprunts.map(emprunt => (console.log(emprunt)) )
+      
+    
     }
+  
+    const fetchEmpruntsUser = (idUser)=>{
+    
+      const result = emprunts.filter(emprunt => emprunt.idUser===idUser
+                                                 && emprunt.remettre===false)
+      return result;
+      }
+      const disponibilteLivre = (idLivre)=>{
+        
+        const result = emprunts.filter(emprunt => emprunt.idLivre === idLivre && 
+          emprunt.remettre===false)
+          alert("dispo!"+result.length)
+        return result;
+        }
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => { 
+
+      
       let a = new Date(dateDebut)
       let b = new Date(dateFin)
       setDateDebut(a)
@@ -48,6 +79,8 @@ function ModalEmpruntLivre({libelle,auteur,
             emprunterLivre("1",id,dateDebut,dateFin)}
            
         }
+        
+       
 
         
           }

@@ -18,10 +18,9 @@ import './LivreElement.css'
 
 
 function LivreElement({libelle,auteur,
-                       edition,id,deleteLivre,
-                       nbExemplaires,updateLivre,toast,
-                       toastError,fetchEmpruntsUser,
-                       disponibilteLivre,emprunterLivre}) {
+                       edition,id,
+                       nbExemplaires,toast,
+                       toastError,emprunts,livres,setLivres}) {
    
   const [libelleToUpdate, setLibelle] = useState(libelle)
   const [auteursToUpdate, setAuteur] = useState(auteur)
@@ -54,9 +53,8 @@ function LivreElement({libelle,auteur,
                                                       nbExemplaires = {nbExemplairesToUpdate} 
                                                       toast={toast}
                                                       toastError={toastError}
-                                                      fetchEmpruntsUser={fetchEmpruntsUser}
-                                                      disponibilteLivre={disponibilteLivre}
-                                                      emprunterLivre={emprunterLivre}/>              
+                                                      emprunts={emprunts}
+                                                      />              
                                         {userAuth.role==='admin' &&            
                                        <ModalUpdateLivre libelle={libelleToUpdate}
                                                           auteur={auteursToUpdate}
@@ -64,12 +62,15 @@ function LivreElement({libelle,auteur,
                                                           nbExemplaires = {nbExemplairesToUpdate}
                                                           id={id}
                                                           toast={toast}
-                                                          updateLivre={updateLivre} 
+                                                          livres={livres}
+                                                          setLivres={setLivres}
                                                       />}
                                         {userAuth.role==='admin' &&
-                                        <ModalDeleteLivre deleteLivre={deleteLivre}
+                                        <ModalDeleteLivre 
                                                           toast={toast}
-                                                           id={id}/>}
+                                                           id={id}
+                                                           livres={livres}
+                                                           setLivres={setLivres}/>}
                                         
                 </p>
               </div>

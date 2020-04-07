@@ -10,7 +10,19 @@ import { useForm } from 'react-hook-form'
 
 function ModalUpdateLivre({libelle,auteur,
                            edition,id,
-                           nbExemplaires,updateLivre,toast}) {
+                           nbExemplaires,toast,livres,setLivres}) {
+                            const updateLivre = (id,libelle,auteur,edition,nombreExemplaires) => {
+                              console.log(libelle+"lib2")
+                              const newLivres = livres.map((livre) =>
+                                livre.id === id ? { id,libelle,auteur,edition,nombreExemplaires } : livre
+                              )
+                              setLivres([])
+                              setLivres(newLivres)
+                              
+                              livres.map(livre=>console.log(newLivres))
+                              livres.map(livre=>console.log(livres))
+                            }
+                          
   
   
     const [show, setShow] = useState(false);
