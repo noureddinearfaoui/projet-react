@@ -2,21 +2,60 @@ import React, { useState, memo } from "react"
 import Menuvertical from '../menuVertical/Menuvertical'
 import Livreliste from '../livreliste/Livreliste'
 import {findAllLivre} from '../../services/livre.service'
+import {findAllEmprunts} from '../../services/emprunt.service'
+
+
+
 
 import './Livres.css'
 
 function Livres(){
     const [livres, setLivres] = useState([])
+    const [emprunts, setEmprunts] = useState([])
+
+
+   
     
   const AllLivre = async () =>{
       
       const res = await findAllLivre();
      
-     
-      return res;
+      setLivres(res);
       
 
   }
+  const AllEmprunts = async () =>{
+      
+    const res = await findAllEmprunts();
+   
+    setEmprunts(res);
+    alert(emprunts)
+    
+
+}
+  AllLivre();
+  AllEmprunts();
+  
+  const comparerDate = (firstDate,SecondDate)=>
+  {
+    return firstDate.getDay      ===  SecondDate.getDay &&
+           firstDate.getMonth    ===  SecondDate.getMonth &&
+           firstDate.getFullYear ===  SecondDate.getFullYear;
+
+  }
+   const fetchEmpruntsUser = (idUser)=>{
+    
+    const result = emprunts.filter(emprunt => emprunt.idUser===idUser
+                                               && emprunt.remettre===false)
+    return result;
+    }
+    const disponibilteLivre = (idLivre)=>{
+      
+      const result = emprunts.filter(emprunt => emprunt.idLivre === idLivre && 
+        emprunt.remettre===false)
+        alert("dispo!"+result.length)
+      return result;
+      }
   const updateLivre = (id,libelle,auteur,edition,nombreExemplaires) => {
     console.log(libelle+"lib2")
     const newLivres = livres.map((livre) =>
@@ -52,6 +91,25 @@ function Livres(){
       ])
       
   }
+  const emprunterLivre = async (idUser,idLivre,dateDebut,dateFin) =>{
+      
+   
+    alert("lll")
+    emprunts.push({id:emprunts.length+1,
+      idUser,
+      idLivre,
+      dateDebut,
+      dateFin,
+      remettre:false
+    
+
+       
+ })
+    setEmprunts(emprunts)
+    alert(emprunts)
+
+    emprunts.map(emprunt => (console.log(emprunt)) )   
+}
 
     return(
         
@@ -66,7 +124,11 @@ function Livres(){
                   <Livreliste addLivre={addLivre} 
                               livres={livres} 
                               deleteLivre={deleteLivre}
-                              updateLivre={updateLivre}  />
+                              updateLivre={updateLivre}
+                              fetchEmpruntsUser={fetchEmpruntsUser}
+                              disponibilteLivre={disponibilteLivre}
+                              emprunterLivre={emprunterLivre}
+                                />
                
                 </div>
                    

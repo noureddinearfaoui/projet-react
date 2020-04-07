@@ -8,15 +8,15 @@ const livres = [
     },
     
     {
-        id: "1",
-        libelle: "Learn html",
+        id: "2",
+        libelle: "nooo",
         auteur: 60,
         edition: "noureddine",
         nombreExemplaires:4,
       },
       {
-        id: "1",
-        libelle: "Learn html",
+        id: "3",
+        libelle: "bbbbb",
         auteur: 60,
         edition: "noureddine",
         nombreExemplaires:4,

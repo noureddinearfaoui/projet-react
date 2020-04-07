@@ -47,7 +47,7 @@ function Signup(){
                         <div className="form-group">
                             <input type="date" className="form-control" placeholder="Date de naissance *"
                             onInput={e => setDateN(e.target.value)}  name="dateN"  
-                            ref={register({required:true, required:true })} />
+                            ref={register({required:true })} />
                         {errors.dateN && <span className="text-danger text-error"><IoIosAlert/>la date de naissance est obligatoire </span>}
                         </div>
                         <div className="form-group">

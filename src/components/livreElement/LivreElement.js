@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import './LivreElement.css'
-import {IoIosAlert,IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
- import { Button,Modal } from 'react-bootstrap';
+//import {IoIosAlert,IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
+ //import { Button,Modal } from 'react-bootstrap';
  import { useForm } from 'react-hook-form'
  import DetailsLivre from '../detailsLivre/DetailsLivre'
  import ModalDeleteLivre from '../modalDeleteLivre/ModalDeleteLivre'
  import ModalUpdateLivre from '../modalUpdateLivre/ModalUpdateLivre'
+ import ModalEmpruntLivre from '../modalEmpruntLivre/ModalEmpruntLivre'
  
  
 
@@ -18,15 +19,18 @@ import {IoIosAlert,IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
 
 function LivreElement({libelle,auteur,
                        edition,id,deleteLivre,
-                       nbExemplaires,updateLivre,toast}) {
+                       nbExemplaires,updateLivre,toast,
+                       toastError,fetchEmpruntsUser,
+                       disponibilteLivre,emprunterLivre}) {
    
   const [libelleToUpdate, setLibelle] = useState(libelle)
   const [auteursToUpdate, setAuteur] = useState(auteur)
   const [nbExemplairesToUpdate, setnbExemplaire] = useState(nbExemplaires)
   const [editionToUpdate, setEdition] = useState(edition)
   const { register, handleSubmit, errors } = useForm()
-   
 
+
+  const userAuth = JSON.parse(localStorage.getItem('user'));
   
     
   
@@ -43,6 +47,17 @@ function LivreElement({libelle,auteur,
                                                       auteur={auteursToUpdate}
                                                       edition = {editionToUpdate}
                                                       nbExemplaires = {nbExemplairesToUpdate} />
+                                        <ModalEmpruntLivre id={id}
+                                                      libelle={libelleToUpdate}
+                                                      auteur={auteursToUpdate}
+                                                      edition = {editionToUpdate}
+                                                      nbExemplaires = {nbExemplairesToUpdate} 
+                                                      toast={toast}
+                                                      toastError={toastError}
+                                                      fetchEmpruntsUser={fetchEmpruntsUser}
+                                                      disponibilteLivre={disponibilteLivre}
+                                                      emprunterLivre={emprunterLivre}/>              
+                                        {userAuth.role==='admin' &&            
                                        <ModalUpdateLivre libelle={libelleToUpdate}
                                                           auteur={auteursToUpdate}
                                                           edition = {editionToUpdate}
@@ -50,10 +65,11 @@ function LivreElement({libelle,auteur,
                                                           id={id}
                                                           toast={toast}
                                                           updateLivre={updateLivre} 
-                                                      />
+                                                      />}
+                                        {userAuth.role==='admin' &&
                                         <ModalDeleteLivre deleteLivre={deleteLivre}
                                                           toast={toast}
-                                                           id={id}/>
+                                                           id={id}/>}
                                         
                 </p>
               </div>

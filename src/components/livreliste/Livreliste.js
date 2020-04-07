@@ -9,10 +9,28 @@ import { ToastsContainer,ToastsStore} from 'react-toasts';
 
 
 
-function Livreliste({addLivre,livres,deleteLivre,updateLivre}) {
-  const toast = () => ToastsStore.success("Hey, Success!");
+function Livreliste({addLivre,livres,deleteLivre,
+                     updateLivre,fetchEmpruntsUser,
+                     disponibilteLivre,emprunterLivre}) {
+  const toast = (msg=null) =>
+    {
+          if(msg===null)
+          ToastsStore.success("Hey, success!");
+          else
+          ToastsStore.success("Hey!"+msg);
+           
+    } 
+  const toastError = (msg=null) =>
+    {
+          if(msg===null)
+          ToastsStore.error("Hey, error!");
+          else
+          ToastsStore.error("Hey!"+msg);
+           
+    } 
   
   
+  const userAuth = JSON.parse(localStorage.getItem('user'));
  
 
   return (
@@ -30,6 +48,7 @@ function Livreliste({addLivre,livres,deleteLivre,updateLivre}) {
                     <div className="col-lg-3 col-md-3">
                       <button id="btnshow" className="btn btn-danger"><IoIosArrowDropupCircle/></button>
                     </div>
+                    
                     <div className = "col-lg-3 col-md-3">
                        <LivreForm addLivre={addLivre} toast={toast} />                
                     </div>
@@ -54,7 +73,11 @@ function Livreliste({addLivre,livres,deleteLivre,updateLivre}) {
                 deleteLivre={deleteLivre}
                 nbExemplaires={livre.nombreExemplaires}
                 updateLivre={updateLivre}
-                toast={toast}>
+                toast={toast}
+                toastError={toastError}
+                fetchEmpruntsUser={fetchEmpruntsUser}
+                emprunterLivre={emprunterLivre}
+                disponibilteLivre={disponibilteLivre}>
                 
               </LivrElement>))}
             </div>

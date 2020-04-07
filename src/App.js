@@ -27,7 +27,8 @@ function App() {
           <Menu></Menu>
           </Route>
           <Route path="/Livre">
-            
+          <Menu></Menu>
+          <SignIn />
           </Route>
           <Route exact path="/">
           <Menu></Menu>

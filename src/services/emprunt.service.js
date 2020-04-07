@@ -1,16 +1,32 @@
+
+
 const emprunts = [
-    {
-      id: "1",
-      idUser: "Learn html",
-      idLivre: 60,
-      dateDebut: "noureddine",
-      dateFin:4,
-    },
-    {
-        id: "1",
-        libelle: "Learn html",
-        auteur: 60,
-        edition: "noureddine",
-        nombreExemplaires:4,
-      }
-  ]
+  { id: 1, 
+    idUser: "1", 
+    idLivre: "1",
+    dateDebut: "2020-04-08", 
+    dateFin: "2020-04-11",
+    remettre:true
+
+  }]
+  export const fetchEmpruntsUser=async(idUser)=>{
+   
+    
+    return new Promise(function(resolve,reject){
+      const result = emprunts.filter(emprunt => emprunt.idUser===idUser)
+
+       resolve(result)
+
+
+    })
+
+}
+export const findAllEmprunts=()=>{
+   
+    
+  return new Promise(function(resolve,reject){
+    resolve(emprunts)
+
+
+  })
+}

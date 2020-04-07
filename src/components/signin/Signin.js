@@ -1,16 +1,29 @@
-import React, { useState, memo } from "react"
+import React, {useState, memo } from "react"
 import './Signin.css'
 import {authentification} from '../../services/user.service'
+
+import {
+    Redirect
+    
+  } from "react-router-dom";
+
 
 function Signin(){
     const [email, setEmail] = useState("")
     const [danger, setDanger] = useState(false)
     const [errors, setErrors] = useState("")
     const [password, setPassword] = useState("")
- const Login = () =>{
+    const [redirect, setredirect] = useState(false)
 
+  
+ const Login = () =>{
+    
+    
     authentification(email,password).then(( result) => {
         console.log(result); // "Tout est OK!"
+        localStorage.clear();
+        localStorage.setItem('user', JSON.stringify(result));
+        setredirect(true)
     }, function (err) {
         console.log(err); // Error: "Hmm c'est embêtant…"
         setErrors(err);
@@ -22,6 +35,8 @@ function Signin(){
     return(
         
         <div className="Signin">
+
+            {redirect&& <Redirect to='/'/>}
             {danger &&
             <div className="alert alert-danger">
             <strong>Danger!</strong>{errors}
