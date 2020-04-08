@@ -1,8 +1,8 @@
 const users = [
     {
       id: "1",
-      nom: "Learn html",
-      prenom: 60,
+      nom: "noureddine",
+      prenom: "arfaoui",
       email: "noureddine",
       password:"arfa",
       adresse: "beginner",
@@ -39,6 +39,11 @@ const users = [
     return tasks.filter(task => task.title.includes(searchValue))
   }
   */
+ export const findUserById =  (idUser)=>
+ { 
+  const userFind = users.find(user => user.id===idUser);
+  return userFind;
+ }
  export const authentification = async (email,password)=>
  {      
   return new Promise(function (resolve, reject) {

@@ -7,6 +7,7 @@ import './LivreElement.css'
  import ModalDeleteLivre from '../modalDeleteLivre/ModalDeleteLivre'
  import ModalUpdateLivre from '../modalUpdateLivre/ModalUpdateLivre'
  import ModalEmpruntLivre from '../modalEmpruntLivre/ModalEmpruntLivre'
+ import EmpruntsDetails from '../empruntsDetails/EmpruntsDetails'
  
  
 
@@ -54,7 +55,10 @@ function LivreElement({libelle,auteur,
                                                       toast={toast}
                                                       toastError={toastError}
                                                       emprunts={emprunts}
-                                                      />              
+                                                      />
+                                        <EmpruntsDetails id={id}
+                                                      emprunts={emprunts}
+                                                      />                   
                                         {userAuth.role==='admin' &&            
                                        <ModalUpdateLivre libelle={libelleToUpdate}
                                                           auteur={auteursToUpdate}

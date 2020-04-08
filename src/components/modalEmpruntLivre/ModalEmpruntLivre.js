@@ -21,67 +21,54 @@ function ModalEmpruntLivre({libelle,auteur,
     
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const emprunterLivre = async (idUser,idLivre,dateDebut,dateFin) =>{
-      
-   
-      alert("lll")
-      emprunts.push({id:emprunts.length+1,
-        idUser,
-        idLivre,
-        dateDebut,
-        dateFin,
-        remettre:false
-      
-  
-         
-   })
-     
-  
-  
-      emprunts.map(emprunt => (console.log(emprunt)) )
-      
-    
+
+    const emprunterLivre =  (idUser,idLivre,
+                             dateDebut,dateFin) =>{
+
+            emprunts.push({id:emprunts.length+1,
+              idUser,
+              idLivre,
+              dateDebut,
+              dateFin,
+              remettre:false
+                  })
+           emprunts.map(emprunt => (console.log(emprunt)) )
     }
   
     const fetchEmpruntsUser = (idUser)=>{
-    
-      const result = emprunts.filter(emprunt => emprunt.idUser===idUser
+    const result = emprunts.filter(emprunt => emprunt.idUser===idUser
                                                  && emprunt.remettre===false)
       return result;
       }
+
       const disponibilteLivre = (idLivre)=>{
-        
-        const result = emprunts.filter(emprunt => emprunt.idLivre === idLivre && 
-          emprunt.remettre===false)
-          alert("dispo!"+result.length)
+          const result = emprunts.filter(emprunt => emprunt.idLivre === idLivre && 
+                                         emprunt.remettre===false)
+         
         return result;
         }
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => { 
 
       
-      let a = new Date(dateDebut)
-      let b = new Date(dateFin)
-      setDateDebut(a)
-       setDateFin(b)
-       alert(dateFin)
-       alert(dateDebut)
+       
+       
         let res =  fetchEmpruntsUser("1");
         if(res.length >= 2)
         toastError("vous ne pouvez pas emprunter plus que deux livre");
         else
-        { alert("jjjj")
+        { 
          res = disponibilteLivre(id)
          if(res.length>0)
            toastError("ce livre est emprunter déja");
           else 
-          {alert("jjjj")
+          {
             emprunterLivre("1",id,dateDebut,dateFin)}
            
         }
         
        
-
+     handleClose();
         
           }
 
