@@ -44,7 +44,7 @@ function LivreForm({livres,setLivres,toast}){
           
     return(
         
-        <div className="Livres ">
+        <div className="LivreForm ">
             <Button variant="success" onClick={handleShow}>
                 <IoIosAddCircle/>
             </Button>

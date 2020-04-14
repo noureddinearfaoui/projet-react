@@ -11,7 +11,7 @@ import {findUserById} from '../../services/user.service'
 
 function Emprunteur({idUser}) {
   
-    const [emprunteur, setEmprunteur] = useState(findUserById(idUser));
+    const [emprunteur] = useState(findUserById(idUser));
        
 
 

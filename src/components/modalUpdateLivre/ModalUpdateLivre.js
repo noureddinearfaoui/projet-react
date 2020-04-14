@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './ModalUpdateLivre.css'
-import {IoMdColorWand,IoIosBrush,IoIosAlert} from 'react-icons/io';
+import {IoIosBrush,IoIosAlert} from 'react-icons/io';
 import { Button,Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 

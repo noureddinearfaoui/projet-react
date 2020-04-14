@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import './DetailsLivre.css'
 import {IoMdColorWand} from 'react-icons/io';
-import { Button,Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 
 

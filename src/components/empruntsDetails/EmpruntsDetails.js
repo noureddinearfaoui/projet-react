@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import './EmpruntsDetails.css'
 import {IoIosEye} from 'react-icons/io';
-import { Button,Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import Emprunteur from '../emprunteur/Emprunteur'
 
 
@@ -12,7 +12,7 @@ import Emprunteur from '../emprunteur/Emprunteur'
 function EmpruntsDetails({id,emprunts}) {
   
     const [show, setShow] = useState(false);
-    const [LivreEmprunts, setLivreEmprunts] = useState(emprunts);
+  //  const [LivreEmprunts, setLivreEmprunts] = useState(emprunts);
   
     
     
@@ -21,13 +21,6 @@ function EmpruntsDetails({id,emprunts}) {
     
        
 
-    const  LivreEmpruntsfunction =  () =>
-    { 
-       // const res = emprunts.filter(emprunt => emprunt.idLivre === id)
-     //  setLivreEmprunts(emprunts)
-
-
-    }
    
     
     
@@ -59,13 +52,13 @@ function EmpruntsDetails({id,emprunts}) {
                 </Modal.Header>
                 <Modal.Body>
                 {emprunts.map(emprunt => (
-                    <div>
+                    <div key={emprunt.id}>
                      <div className={`detailEmprunt ${!empruntRetard(emprunt) && "redeffet" }`}>
                          <div><span>date debut :</span> {emprunt.dateDebut}</div>
                          <div><span>date fin :</span> {emprunt.dateFin}</div>
                          
                     </div>
-                    <Emprunteur idUser={emprunt.idUser} />
+                    <Emprunteur idUser={emprunt.idUser}  />
                     </div>
                     )
                     

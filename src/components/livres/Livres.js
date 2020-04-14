@@ -11,18 +11,34 @@ import './Livres.css'
 
 function Livres(){
     const [livres, setLivres] = useState(findAllLivre())
+    const [ancienlivres, setancienLivres] = useState(findAllLivre())
     const [emprunts, setEmprunts] = useState([])
 
 
-   
-    
-  const AllLivre = async () =>{
-      
-      const res = await findAllLivre();
-     
-      setLivres(res);
-      
+   const changerLivers = (livresParam) =>{
+       alert('hey exx')
+       console.log(livresParam+"param")
+  
+   setLivres(livresParam)
 
+   setancienLivres(livresParam)
+
+   console.log(livres+" mainlivres")
+   console.log(ancienlivres+" anscien main")
+   }
+  
+  const fetchLivres =  searchValue => {
+       
+    // return tasks
+    const res = livres.filter(livre => livre.libelle.includes(searchValue))
+    if(res.length>0)
+    {
+        setancienLivres(res)
+        console.log(res+" foncres")
+        console.log(livres+" foncresLivres")
+    }
+    else
+    setancienLivres([])
   }
   const AllEmprunts = async () =>{
       
@@ -36,8 +52,20 @@ function Livres(){
  // AllLivre();
   AllEmprunts();
   
-  
+  const findLivreById =  (idLivre)=>
+  { const livresp = findAllLivre();
+   const livreFind = livresp.find(livre => livre.id===idLivre);
+
+   const res = [];
+   if(livreFind!== undefined)
+   res.push(livreFind)
+   setLivres([])
+   setLivres(res)
    
+   console.log(res)
+   console.log(livres)
+  }
+ 
   
   
   
@@ -53,9 +81,12 @@ function Livres(){
                <div className="partiedroite col-lg-9">
                
                   <Livreliste 
-                              livres={livres} 
+                              livres={ancienlivres} 
+                              
                               emprunts={emprunts}
-                              setLivres={setLivres}
+                              setLivres={changerLivers}
+                              fetchLivres={fetchLivres}
+                              findLivreById={findLivreById}
                                />
                
                 </div>

@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './ModalEmpruntLivre.css'
-import {IoIosWallet} from 'react-icons/io';
+import {IoMdBook} from 'react-icons/io';
 import { Button,Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { IoIosAlert } from 'react-icons/io';
@@ -74,7 +74,7 @@ function ModalEmpruntLivre({libelle,auteur,
 
   return (
     <div className="DetailsLivre">
-        <span onClick={handleShow} className="icons icon"><IoIosWallet/></span>
+        <span onClick={handleShow} className="icons icon"><IoMdBook/></span>
         <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                      <Modal.Title className="element">Voulez-vous emprunter ce  livre ?</Modal.Title>

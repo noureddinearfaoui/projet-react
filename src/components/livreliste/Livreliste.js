@@ -1,16 +1,25 @@
-import React,{useState} from 'react';
+import React,{useState,memo} from 'react';
 import './Livreliste.css'
-import { IoIosArrowDropupCircle} from 'react-icons/io';
+
 import LivreForm from '../LivreForm/LivreForm'
 import LivrElement from '../livreElement/LivreElement'
 import { ToastsContainer,ToastsStore} from 'react-toasts';
+import FormSearchLivre from '../formSearchLivre/FormSearchLivre'
 
 
 
 
 
 function Livreliste({livres,
-                      emprunts,setLivres}) {
+                      emprunts,setLivres,findLivreById,fetchLivres}) {
+
+                        
+                  
+                   const [loding] = useState(true)
+                //  console.log(livres+"liste")
+                  livres.map(livre =>console.log(livre.libelle))
+
+                  
   const toast = (msg=null) =>
     {
           if(msg===null)
@@ -29,7 +38,7 @@ function Livreliste({livres,
     } 
   
   
-  const userAuth = JSON.parse(localStorage.getItem('user'));
+  //const userAuth = JSON.parse(localStorage.getItem('user'));
  
 
   return (
@@ -39,22 +48,22 @@ function Livreliste({livres,
         <ToastsContainer store={ToastsStore}/>
         <div className="table-title">
                 <div className="row">
-                    <div className="col-sm-6">
-						          <h2>Manage <b>Employees</b></h2>
+                    <div className="col-lg-9 col-md-9 col-sm-12">
+                    <FormSearchLivre livres={livres}
+                                            findLivreById={findLivreById}
+                                            setLivres={setLivres}
+                                            fetchLivres={fetchLivres}/>
 					      </div>
-					      <div className="col-sm-6 ">
-                  <div className="row">
-                    <div className="col-lg-3 col-md-3">
-                      <button id="btnshow" className="btn btn-danger"><IoIosArrowDropupCircle/></button>
-                    </div>
-                    
-                    <div className = "col-lg-3 col-md-3">
+					      <div className="col-lg-3 col-md-3 col-sm-12 ">
+                   
+                  
                        <LivreForm livres={livres}
                                setLivres={setLivres} toast={toast} />                
-                    </div>
-                   </div>
+                    
+                   
                 </div>
                 </div>
+               
         </div>  
         <div className="contenu">
             <div className="headerContenu">
@@ -64,8 +73,10 @@ function Livreliste({livres,
               <p>Name</p>
             </div>
             <div className="BodyContenu">
-            {livres.map(livre => (
+            {loding && 
+            livres.map(livre => (
               <LivrElement 
+              key={livre.id}
                 id = {livre.id}
                 libelle = {livre.libelle}
                 auteur={livre.auteur}
@@ -79,7 +90,7 @@ function Livreliste({livres,
                >
                   
                 
-              </LivrElement>))}
+              </LivrElement>)) }
             </div>
          
         </div>
@@ -88,4 +99,4 @@ function Livreliste({livres,
   );
 }
 
-export default Livreliste;
+export default memo(Livreliste);

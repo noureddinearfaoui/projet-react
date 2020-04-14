@@ -24,9 +24,9 @@ const users = [
       }
   ]
   
-  function delay(ms) {
+ /* function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
-  }
+  }*/
   
   /*export const fetchTaskById=async(taskId)=>{
     await delay(500)

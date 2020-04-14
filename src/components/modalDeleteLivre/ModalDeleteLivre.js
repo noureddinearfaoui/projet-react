@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './ModalDeleteLivre.css'
-import {IoMdColorWand,IoMdTrash} from 'react-icons/io';
+import {IoMdTrash} from 'react-icons/io';
 import { Button,Modal } from 'react-bootstrap';
 
 
