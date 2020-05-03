@@ -1,4 +1,23 @@
-const users = [
+import Axios from 'axios'
+
+export const fetchUser = async () => {
+  // 
+  const result = await Axios.get(
+    "http://localhost:3003/users", 
+  )
+    return result
+
+}
+export const banni = async (id,value) => {
+  // 
+  const result = await Axios.get(
+    "http://localhost:3003/banni/"+id, { 'headers': { 'value': value } }
+  )
+    return result
+
+}
+
+ const users = [
     {
       id: "1",
       nom: "noureddine",
@@ -12,22 +31,40 @@ const users = [
       banni:false
     },
     {
-        id: "1",
-        nom: "Learn html",
-        prenom: 60,
-        email: "beginner",
-        adresse: "beginner",
-        tel: "05/04/2020",
-        dateNaissance:"05/04/2200",
-        role:"admin",
-        banni:true
-      }
+      id: "2",
+      nom: "marwen",
+      prenom: "hanzouli",
+      email: "marwen",
+      password:"hanzouli",
+      adresse: "beginner",
+      tel: "05/04/2020",
+      dateNaissance:"05/04/2200",
+      role:"user",
+      banni:true
+    },
+    {
+      id: "3",
+      nom: "noureddine",
+      prenom: "arfaoui",
+      email: "noureddine",
+      password:"arfa",
+      adresse: "beginner",
+      tel: "05/04/2020",
+      dateNaissance:"05/04/2200",
+      role:"user",
+      banni:false
+    }
   ]
   
- /* function delay(ms) {
+  function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
-  }*/
+  }
+  export const fetchUsers =  () => {
   
+    // return tasks
+    let resultat =  users.filter(user => user.role ==="user")
+    return resultat;
+  }
   /*export const fetchTaskById=async(taskId)=>{
     await delay(500)
     return tasks.find(task => task.id===taskId)

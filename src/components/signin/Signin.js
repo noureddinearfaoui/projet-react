@@ -20,12 +20,12 @@ function Signin(){
     
     
     authentification(email,password).then(( result) => {
-        console.log(result); // "Tout est OK!"
+       
         localStorage.clear();
         localStorage.setItem('user', JSON.stringify(result));
         setredirect(true)
     }, function (err) {
-        console.log(err); // Error: "Hmm c'est embêtant…"
+       
         setErrors(err);
         setDanger(true);
     });
@@ -36,7 +36,7 @@ function Signin(){
         
         <div className="Signin">
 
-            {redirect&& <Redirect to='/'/>}
+            {redirect&& <Redirect to='/livres'/>}
             {danger &&
             <div className="alert alert-danger">
             <strong>Danger!</strong>{errors}
@@ -60,7 +60,7 @@ function Signin(){
                             </button>
                         </div>
                         <div className="form-group">
-                            <a href="#" className="ForgetPwd">Forget Password?</a>
+                           
                         </div>
                     
                 </div>

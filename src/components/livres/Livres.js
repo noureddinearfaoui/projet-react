@@ -3,13 +3,23 @@ import Menuvertical from '../menuVertical/Menuvertical'
 import Livreliste from '../livreliste/Livreliste'
 import {findAllLivre} from '../../services/livre.service'
 import {findAllEmprunts} from '../../services/emprunt.service'
-
+import {
+  
+    Redirect
+    
+  } from "react-router-dom";
 
 
 
 import './Livres.css'
 
 function Livres(){
+    const [redirect, setredirect] = useState(false)
+
+  const userAuth = JSON.parse(localStorage.getItem('user'));
+  if(userAuth===undefined)
+   setredirect(true)
+
     const [livres, setLivres] = useState(findAllLivre())
     const [ancienlivres, setancienLivres] = useState(findAllLivre())
     const [emprunts, setEmprunts] = useState([])
@@ -71,8 +81,9 @@ function Livres(){
   
 
     return(
-        
+       
         <div className="Livres ">
+             {redirect && <Redirect to='/livres'/>}
             <div className="row">
                 <div className="partiedroite col-lg-3">
                     <Menuvertical/>

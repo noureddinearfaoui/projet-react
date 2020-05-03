@@ -1,0 +1,32 @@
+.img-circle{
+    border-radius: 50%;
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ddd;
+   
+}
+.img-thumbnail {
+    display: inline-block;
+    width: 300px;
+    height: 100%;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+}
+.btns
+{
+    margin-top: 2%;
+    
+}
+.btnMargin
+{
+     margin-left: 2%;
+     color: none;
+     color:white;
+     height:50px;
+     font-size: 9px;
+}

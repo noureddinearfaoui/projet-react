@@ -1,6 +1,10 @@
 import React, {memo } from "react"
 
 import './Menuvertical.css'
+import {
+    Link 
+  } from "react-router-dom";
+  
 
 function Menuvertical(){
    
@@ -8,11 +12,11 @@ function Menuvertical(){
         
         <div className="Menuvertical">
             <div className="vertical-menu">
-                   <a href="#" className="active">Home</a>
-                   <a href="#">Link 1</a>
-                   <a href="#">Link 2</a>
-                   <a href="#">Link 3</a>
-                   <a href="#">Link 4</a>
+                   <div className="active">Home</div>
+                   <Link to="/livres">Livres</Link>
+                   <Link to="/users">Users</Link>
+                   <Link to="/logout">Déconnexion</Link>
+                   
              </div>
        </div>
     );
