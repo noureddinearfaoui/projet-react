@@ -5,13 +5,14 @@ import LivreForm from '../LivreForm/LivreForm'
 import LivrElement from '../livreElement/LivreElement'
 import { ToastsContainer,ToastsStore} from 'react-toasts';
 import FormSearchLivre from '../formSearchLivre/FormSearchLivre'
+import Livre from '../livre/Livre'
 
 
 
 
 
 function Livreliste({livres,
-                      emprunts,setLivres,findLivreById,fetchLivres}) {
+                      emprunts,setLivres,findLivreById,fetchLivres,user}) {
 
                         
                   
@@ -73,24 +74,35 @@ function Livreliste({livres,
               <p>Name</p>
             </div>
             <div className="BodyContenu">
-            {loding && 
+            {user.role ==="admin" ?
+            
             livres.map(livre => (
               <LivrElement 
               key={livre.id}
-                id = {livre.id}
-                libelle = {livre.libelle}
-                auteur={livre.auteur}
-                edition={livre.edition}
-                nbExemplaires={livre.nombreExemplaires}
-                toast={toast}
-                toastError={toastError}
-                emprunts={emprunts}
-                 livres={livres}
-                 setLivres={setLivres}
+              livre={livre}
+              toast={toast}
+              toastError={toastError}
+              emprunts={emprunts}
+              livres={livres}
+                   setLivres={setLivres}
                >
                   
                 
-              </LivrElement>)) }
+              </LivrElement>)):
+              livres.map(livre => (
+                <Livre 
+                key={livre.id}
+                livre={livre}
+                  nbExemplaires={livre.nombreExemplaires}
+                  toast={toast}
+                  toastError={toastError}
+                  emprunts={emprunts}
+                   livres={livres}
+                   setLivres={setLivres}
+                 >
+                    
+                  
+                </Livre>))}
             </div>
          
         </div>

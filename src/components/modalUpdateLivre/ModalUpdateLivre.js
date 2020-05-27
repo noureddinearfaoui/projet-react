@@ -8,13 +8,14 @@ import { useForm } from 'react-hook-form'
 
 
 
-function ModalUpdateLivre({libelle,auteur,
+function ModalUpdateLivre({libelle,auteur,imageProp,
                            edition,id,
                            nbExemplaires,toast,livres,setLivres}) {
-                            const updateLivre = (id,libelle,auteur,edition,nombreExemplaires) => {
+                            const updateLivre = (id,libelle,auteur,edition,nombreExemplaires,image) => {
                               console.log(libelle+"lib2")
+                              console.log(image)
                               const newLivres = livres.map((livre) =>
-                                livre.id === id ? { id,libelle,auteur,edition,nombreExemplaires } : livre
+                                livre.id === id ? { id,libelle,auteur,edition,nombreExemplaires,image } : livre
                               )
                               setLivres([])
                               setLivres(newLivres)
@@ -33,14 +34,31 @@ function ModalUpdateLivre({libelle,auteur,
     const [auteursToUpdate, setAuteur] = useState(auteur)
     const [nbExemplairesToUpdate, setnbExemplaire] = useState(nbExemplaires)
     const [editionToUpdate, setEdition] = useState(edition)
+    const [imageLivre,setImage] = useState(imageProp)
+    const [file, setFile] = useState("")
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => { 
+
       
-        updateLivre(id,libelleToUpdate,
-                     auteursToUpdate,editionToUpdate,
-                     nbExemplairesToUpdate);
-                    console.log(libelleToUpdate+"lib") 
-                     
+        
+    if(file!=="")
+    {               
+    const reader = new FileReader();
+    alert(file)
+    reader.readAsDataURL(file);
+    reader.onloadend =  () => {setImage(reader.result)
+      console.log(imageLivre)
+      updateLivre(id,libelleToUpdate,
+        auteursToUpdate,editionToUpdate,
+        nbExemplairesToUpdate,reader.result);
+                            };
+    reader.onerror=()=>alert("errpr");}
+    else
+    {
+      console.log(imageLivre)
+    }
+    
+   
         setShow(false);
         toast();
        
@@ -86,6 +104,15 @@ function ModalUpdateLivre({libelle,auteur,
                              {errors.nbEx && <span className="text-danger text-error"><IoIosAlert/>le Nombre d'exemplaire est obligatoire </span>}
                 
                 </div>
+                <div className="input-group">
+                                                  
+                                                 <div className="custom-file">
+                                                      <input type="file" className="custom-file-input" id="inputGroupFile01"
+                                                       aria-describedby="inputGroupFileAddon01"
+                                                       onChange={e => setFile(e.target.files[0])}/>
+                                                       <label className="custom-file-label">Choose file</label>
+                                                  </div>
+                                          </div>
 
                 </Modal.Body>
                 <Modal.Footer>

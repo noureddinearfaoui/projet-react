@@ -23,10 +23,11 @@ function Users(){
    useEffect(() => {
    const fetchdata = async ()=>{
     setloading(true);
-       const result = await fetchUser();
+       const result = await fetchUsers();
        setloading(false)
       
-       setUsers(result.data)
+       //setUsers(result.data)
+       setUsers(result)
 
    }
    fetchdata()

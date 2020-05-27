@@ -21,7 +21,7 @@ function FormSearchLivre({livres,setLivres,toast,fetchLivres,findLivreById}){
                     fetchLivres(inputSearch)
             break;
             default:
-                alert('aloo')
+               setLivres([])
 
         }
         

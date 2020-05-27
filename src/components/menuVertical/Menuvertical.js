@@ -12,7 +12,8 @@ function Menuvertical(){
         
         <div className="Menuvertical">
             <div className="vertical-menu">
-                   <div className="active">Home</div>
+                   <div className="active">Menu</div>
+                   <Link to="/profil">Profil</Link>
                    <Link to="/livres">Livres</Link>
                    <Link to="/users">Users</Link>
                    <Link to="/logout">Déconnexion</Link>

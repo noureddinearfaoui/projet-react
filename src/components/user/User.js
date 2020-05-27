@@ -1,10 +1,12 @@
 import React, {useState,memo} from 'react';
 import './User.css'
+import UserEmprunts from '../userEmprunts/UserEmprunts'
 //import {IoIosAlert,IoMdTrash,IoIosBrush,IoMdColorWand} from 'react-icons/io';
  //import { Button,Modal } from 'react-bootstrap';
 
 
  import { AiFillPlusSquare,AiFillMinusSquare } from 'react-icons/ai';
+ import {fetchEmpruntsUser} from '../../services/emprunt.service'
  
  
 
@@ -16,6 +18,7 @@ import './User.css'
 
 
 function User({user,users,banni}) {
+  //const emprunts = fetchEmpruntsUser(user.id);
    
  alert(user.banni)
     
@@ -40,6 +43,7 @@ function User({user,users,banni}) {
         <div  className={`rowElement ${user.banni === true && "red" }`}>
                 <div>{user.nom}</div>
                 <div>{user.prenom}</div>
+                <div><UserEmprunts user={user} /></div>
                 <div>
                 {user.banni === true
                      ? <AiFillMinusSquare className="remove iconbani" onClick={EventbanniFalse} />

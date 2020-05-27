@@ -23,6 +23,7 @@ function Signin(){
        
         localStorage.clear();
         localStorage.setItem('user', JSON.stringify(result));
+        sessionStorage.setItem('user', JSON.stringify(result));
         setredirect(true)
     }, function (err) {
        
@@ -36,7 +37,7 @@ function Signin(){
         
         <div className="Signin">
 
-            {redirect&& <Redirect to='/livres'/>}
+            {redirect&& <Redirect to='/profil'/>}
             {danger &&
             <div className="alert alert-danger">
             <strong>Danger!</strong>{errors}

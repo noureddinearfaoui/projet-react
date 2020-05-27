@@ -53,7 +53,8 @@ function ListeUsers({users,banni}) {
             <div className="headerContenu">
               <div>nom</div>
               <div>prenom</div>
-              <div>:</div>
+              <div>Emprunts:</div>
+              <div>Banni:</div>
             </div>
             <div className="BodyContenu">
             

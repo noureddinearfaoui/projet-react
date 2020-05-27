@@ -8,6 +8,7 @@ import SignUp from './components/signup/Signup'
 import Livres from './components/livres/Livres'
 import Users from './components/users/Users'
 import Profil from './components/profil/Profil'
+import Livre from './components/livre/Livre'
 
 import {
   BrowserRouter as Router,

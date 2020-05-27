@@ -20,19 +20,18 @@ import './LivreElement.css'
 
 
 
-function LivreElement({libelle,auteur,
-                       edition,id,
-                       nbExemplaires,toast,
+function LivreElement({livre,toast,
                        toastError,emprunts,livres,setLivres}) {
    
-  const [libelleToUpdate] = useState(libelle)
-  const [auteursToUpdate] = useState(auteur)
-  const [nbExemplairesToUpdate] = useState(nbExemplaires)
-  const [editionToUpdate] = useState(edition)
+  const [libelleToUpdate] = useState(livre.libelle)
+  const [auteursToUpdate] = useState(livre.auteur)
+  const [nbExemplairesToUpdate] = useState(livre.nbExemplaires)
+  const [editionToUpdate] = useState(livre.edition)
+  const [image] = useState(livre.image)
  
 
 
-  const userAuth = JSON.parse(localStorage.getItem('user'));
+  const userAuth = JSON.parse(sessionStorage.getItem('user'));
   
     const remettreLivre =()=>
     {
@@ -44,12 +43,13 @@ function LivreElement({libelle,auteur,
            emprunts[res].remettre=true;}
            }
   
-  
+     
 
   return (
     <div className="LivreElement">
         
         <div className="rowElement">
+                <div><img src={image} className="imgLivre" alt="avatar"/></div>
                 <div>{libelleToUpdate}</div>
                 <div>{auteursToUpdate}</div>
                 <div>{editionToUpdate}</div>
@@ -57,7 +57,7 @@ function LivreElement({libelle,auteur,
                                 <span onClick={remettreLivre} className="icons icon">
                                   <IoIosApps/>
                                   </span>
-                                       <ModalEmpruntLivre id={id}
+                                       <ModalEmpruntLivre id={livre.id}
                                                       libelle={libelleToUpdate}
                                                       auteur={auteursToUpdate}
                                                       edition = {editionToUpdate}
@@ -67,7 +67,7 @@ function LivreElement({libelle,auteur,
                                                       emprunts={emprunts}
                                                       />
       
-                                        <EmpruntsDetails id={id}
+                                        <EmpruntsDetails id={livre.id}
                                                       emprunts={emprunts}
                                                       /> 
                                         <DetailsLivre libelle={libelleToUpdate}
@@ -80,15 +80,17 @@ function LivreElement({libelle,auteur,
                                                           auteur={auteursToUpdate}
                                                           edition = {editionToUpdate}
                                                           nbExemplaires = {nbExemplairesToUpdate}
-                                                          id={id}
+                                                          id={livre.id}
                                                           toast={toast}
                                                           livres={livres}
                                                           setLivres={setLivres}
+                                                          imageProp={image}
+                                                          
                                                       />}
                                         {userAuth.role==='admin' &&
                                         <ModalDeleteLivre 
                                                           toast={toast}
-                                                           id={id}
+                                                           id={livre.id}
                                                            livres={livres}
                                                            setLivres={setLivres}/>}
                                         

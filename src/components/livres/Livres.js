@@ -16,12 +16,12 @@ import './Livres.css'
 function Livres(){
     const [redirect, setredirect] = useState(false)
 
-  const userAuth = JSON.parse(localStorage.getItem('user'));
+  const userAuth = JSON.parse(sessionStorage.getItem('user'));
   if(userAuth===undefined)
    setredirect(true)
 
     const [livres, setLivres] = useState(findAllLivre())
-    const [ancienlivres, setancienLivres] = useState(findAllLivre())
+    const [recherchelivres, setRechercheLivres] = useState(findAllLivre())
     const [emprunts, setEmprunts] = useState([])
 
 
@@ -31,10 +31,9 @@ function Livres(){
   
    setLivres(livresParam)
 
-   setancienLivres(livresParam)
+   setRechercheLivres(livresParam)
 
-   console.log(livres+" mainlivres")
-   console.log(ancienlivres+" anscien main")
+  
    }
   
   const fetchLivres =  searchValue => {
@@ -43,12 +42,12 @@ function Livres(){
     const res = livres.filter(livre => livre.libelle.includes(searchValue))
     if(res.length>0)
     {
-        setancienLivres(res)
+        setRechercheLivres(res)
         console.log(res+" foncres")
         console.log(livres+" foncresLivres")
     }
     else
-    setancienLivres([])
+    setRechercheLivres([])
   }
   const AllEmprunts = async () =>{
       
@@ -63,17 +62,20 @@ function Livres(){
   AllEmprunts();
   
   const findLivreById =  (idLivre)=>
-  { const livresp = findAllLivre();
-   const livreFind = livresp.find(livre => livre.id===idLivre);
-
-   const res = [];
-   if(livreFind!== undefined)
-   res.push(livreFind)
-   setLivres([])
-   setLivres(res)
-   
-   console.log(res)
-   console.log(livres)
+  { 
+   const res = livres.find(livre => livre.id===idLivre);
+   const tab =[];
+   tab.push(res)
+  
+   alert(tab.length)
+   if(tab.length>0)
+   {  alert("jjj")
+       setRechercheLivres(tab)
+      
+   }
+   else
+   setRechercheLivres([])
+  
   }
  
   
@@ -92,12 +94,13 @@ function Livres(){
                <div className="partiedroite col-lg-9">
                
                   <Livreliste 
-                              livres={ancienlivres} 
+                              livres={recherchelivres} 
                               
                               emprunts={emprunts}
                               setLivres={changerLivers}
                               fetchLivres={fetchLivres}
                               findLivreById={findLivreById}
+                              user={userAuth}
                                />
                
                 </div>
