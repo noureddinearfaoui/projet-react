@@ -9,6 +9,7 @@
     "add": "^2.0.6",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "jest": "^24.9.0",
     "mdbreact": "^4.25.5",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
@@ -23,10 +24,12 @@
     "react-toasts": "^3.0.6"
   },
   "scripts": {
-    "start": "PORT=3000 react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "test:e2e": "start-server-and-test start http://localhost:3000 cypress:open"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,5 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^6.0.0",
+    "cypress": "^4.9.0",
+    "mutation-observer": "^1.0.3",
+    "start-server-and-test": "^1.11.0"
   }
 }

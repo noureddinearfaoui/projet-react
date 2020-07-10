@@ -1,25 +1,19 @@
-import React, {memo } from "react"
+import React, { memo } from "react";
 
-import './Menuvertical.css'
-import {
-    Link 
-  } from "react-router-dom";
-  
+import "./Menuvertical.css";
+import { Link } from "react-router-dom";
 
-function Menuvertical(){
-   
-    return(
-        
-        <div className="Menuvertical">
-            <div className="vertical-menu">
-                   <div className="active">Menu</div>
-                   <Link to="/profil">Profil</Link>
-                   <Link to="/livres">Livres</Link>
-                   <Link to="/users">Users</Link>
-                   <Link to="/logout">Déconnexion</Link>
-                   
-             </div>
-       </div>
-    );
+function Menuvertical() {
+  return (
+    <div className="Menuvertical">
+      <div className="vertical-menu">
+        <div className="active">Menu</div>
+        <Link to="/profil">Profil</Link>
+        <Link to="/livres">Livres</Link>
+        <Link to="/users">Users</Link>
+        <Link to="/logout">Déconnexion</Link>
+      </div>
+    </div>
+  );
 }
 export default memo(Menuvertical);

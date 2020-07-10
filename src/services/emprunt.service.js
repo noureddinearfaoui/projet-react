@@ -1,48 +1,46 @@
-
-
 const emprunts = [
-  { id: 1, 
-    idUser: "1", 
+  {
+    id: 1,
+    idUser: "1",
     idLivre: "1",
-    dateDebut: "2020-04-08", 
+    dateDebut: "2020-04-08",
     dateFin: "2020-04-11",
-    remettre:false
-
+    remettre: false,
   },
-  { id: 1, 
-    idUser: "3", 
+  {
+    id: 1,
+    idUser: "3",
     idLivre: "3",
-    dateDebut: "2020-04-08", 
+    dateDebut: "2020-04-08",
     dateFin: "2020-04-11",
-    remettre:false
-
+    remettre: false,
   },
-  { id: 1, 
-    idUser: "2", 
+  {
+    id: 1,
+    idUser: "2",
     idLivre: "2",
-    dateDebut: "2020-04-08", 
+    dateDebut: "2020-04-08",
     dateFin: "2020-04-11",
-    remettre:false
+    remettre: false,
+  },
+  {
+    id: 1,
+    idUser: "4",
+    idLivre: "4",
+    dateDebut: "2020-06-21",
+    dateFin: "2020-06-23",
+    remettre: false,
+  },
+];
+export const fetchEmpruntsUser = async (idUser) => {
+  return new Promise(function (resolve, reject) {
+    const result = emprunts.filter((emprunt) => emprunt.idUser === idUser);
 
-  }]
-  export const fetchEmpruntsUser=async(idUser)=>{
-   
-    
-    return new Promise(function(resolve,reject){
-      const result = emprunts.filter(emprunt => emprunt.idUser==idUser)
-
-       resolve(result)
-
-
-    })
-
-}
-export const findAllEmprunts=()=>{
-   
-    
-  return new Promise(function(resolve,reject){
-    resolve(emprunts)
-
-
-  })
-}
+    resolve(result);
+  });
+};
+export const findAllEmprunts = () => {
+  return new Promise(function (resolve, reject) {
+    resolve(emprunts);
+  });
+};
