@@ -14,10 +14,12 @@ function Livreliste({
   findLivreById,
   fetchLivres,
   user,
+  updateLivre
 }) {
   const [loding] = useState(true);
   //  console.log(livres+"liste")
   livres.map((livre) => console.log(livre.libelle));
+  
 
   const toast = (msg = null) => {
     if (msg === null) ToastsStore.success("Hey, success!");
@@ -44,11 +46,13 @@ function Livreliste({
             />
           </div>
           <div className="col-lg-3 col-md-3 col-sm-12 ">
-            <LivreForm livres={livres} setLivres={setLivres} toast={toast} />
+          {user.role =="admin" &&
+            <LivreForm livres={livres} setLivres={setLivres} toast={toast} />}
           </div>
         </div>
       </div>
       <div className="contenu">
+        {user.role =="admin" &&
         <div className="headerContenu">
           <p>Livre</p>
           <p>Libelle</p>
@@ -56,7 +60,7 @@ function Livreliste({
           <p>Edition</p>
           <p>nbExemplaires</p>
           <p>-</p>
-        </div>
+        </div>}
         <div className="BodyContenu">
           {user.role === "admin"
             ? livres.map((livre) => (
@@ -68,6 +72,7 @@ function Livreliste({
                   emprunts={emprunts}
                   livres={livres}
                   setLivres={setLivres}
+                  updateLivre={updateLivre}
                 ></LivrElement>
               ))
             : livres.map((livre) => (
@@ -80,6 +85,7 @@ function Livreliste({
                   emprunts={emprunts}
                   livres={livres}
                   setLivres={setLivres}
+                  
                 ></Livre>
               ))}
         </div>

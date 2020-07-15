@@ -10,7 +10,7 @@ import { fetchEmpruntsUser } from "../../services/emprunt.service";
 function User({ user, users, banni }) {
   //const emprunts = fetchEmpruntsUser(user.id);
 
-  alert(user.banni);
+  
 
   const EventbanniFalse = () => {
     banni(user.id, false);

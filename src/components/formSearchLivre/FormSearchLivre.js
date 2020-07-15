@@ -12,17 +12,22 @@ function FormSearchLivre({
 }) {
   const [inputSearch, setInputSearch] = useState("");
   const [selectOption, setselectOption] = useState("");
-
+  const [selectauteur, setselectAuteur] = useState("");
+  const  auteurs = ["auteur1","auteur2","auteur3"] 
   const search = () => {
-    alert(selectOption);
+   // alert(selectOption);
     switch (selectOption) {
       case "id":
-        alert("fetch by id");
+        
         findLivreById(inputSearch);
         break;
       case "libelle":
-        fetchLivres(inputSearch);
+        fetchLivres(inputSearch,"libelle");
         break;
+        case "auteur":
+         
+          fetchLivres(selectauteur,"auteur");
+          break;
       default:
         setLivres([]);
     }
@@ -35,9 +40,23 @@ function FormSearchLivre({
           className=" form-control"
           onChange={(e) => setselectOption(e.target.value)}
         >
-          <option></option>
+          <option value="" disabled selected>Options</option>
           <option value="id">id</option>
           <option value="libelle">libelle</option>
+          <option value="auteur">auteur</option>
+        </select>
+      </div>
+      <div className="col-lg-3  col-md-3 col-sm-12">
+        <select
+          className=" form-control"
+          onChange={(e) => setselectAuteur(e.target.value)}
+        >
+           <option value="" disabled selected>Auteur</option>
+         {auteurs.map((auteur) => 
+          
+          <option value={auteur} >{auteur}</option>
+          
+          )}
         </select>
       </div>
       <div className="inputSearch  col-lg-3 col-md-3 col-sm-12">

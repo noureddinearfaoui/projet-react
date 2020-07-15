@@ -1,7 +1,7 @@
 import React, { useState, memo, useEffect } from "react";
 
 import Menuvertical from "../menuVertical/Menuvertical";
-import { fetchUsers, fetchUser, banni } from "../../services/user.service";
+import { fetchUsers, fetchUser } from "../../services/user.service";
 import ListeUsers from "../ListeUsers/ListeUsers";
 import { BallBeat } from "react-pure-loaders";
 import "./Users.css";
@@ -9,13 +9,27 @@ import "./Users.css";
 function Users() {
   const [usersState, setUsers] = useState([]);
   const [loadingState, setloading] = useState(true);
+  const banni = async (id, value) => {
 
+    const newLivres = usersState.map(user =>
+    {
+        if(user.id==id)
+         user.banni=value
+        
+
+         return user;
+    }
+
+  );
+  return newLivres;
+  }
   const banniFnct = async (id, value) => {
     const result = await banni(id, value);
-    alert(result);
+    console.log(result)
+    //alert("jj");
     setloading(true);
-    const result2 = await fetchUser();
-    setUsers(result2.data);
+   
+    setUsers(result);
     setloading(false);
   };
 

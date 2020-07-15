@@ -14,6 +14,7 @@ function ModalEmpruntLivre({
   toast,
   toastError,
   emprunts,
+  idUser
 }) {
   const [dateDebut, setDateDebut] = useState("");
   const [dateFin, setDateFin] = useState("");
@@ -22,6 +23,7 @@ function ModalEmpruntLivre({
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  //alert(id)
 
   const emprunterLivre = (idUser, idLivre, dateDebut, dateFin) => {
     emprunts.push({
@@ -51,14 +53,15 @@ function ModalEmpruntLivre({
   };
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    let res = fetchEmpruntsUser("1");
+    let res = fetchEmpruntsUser(idUser);
     if (res.length >= 2)
       toastError("vous ne pouvez pas emprunter plus que deux livre");
     else {
       res = disponibilteLivre(id);
       if (res.length > 0) toastError("ce livre est emprunté déja");
       else {
-        emprunterLivre("1", id, dateDebut, dateFin);
+        emprunterLivre(idUser, id, dateDebut, dateFin);
+        toastError("success");
       }
     }
 

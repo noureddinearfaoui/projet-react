@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./UserEmprunts.css";
 import { IoIosEye } from "react-icons/io";
 import { Modal } from "react-bootstrap";
-import Emprunteur from "../emprunteur/Emprunteur";
+import Emprunteur from "../livreEmprunte/LivreEmprunte";
+
 
 import { fetchEmpruntsUser } from "../../services/emprunt.service";
 
@@ -12,13 +13,13 @@ function UserEmprunts({ id, user }) {
   useEffect(() => {
     const fetchdata = async () => {
       const result = await fetchEmpruntsUser(user.id);
-      alert(user.id);
+     
       console.log(result);
 
       setemprunts(result);
     };
     fetchdata();
-  }, [user.id]);
+  }, []);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -36,14 +37,14 @@ function UserEmprunts({ id, user }) {
   };
 
   return (
-    <div className="EmpruntsDetails">
+    <div className="Emprunts">
       <span onClick={handleShow} className="icons ">
         <IoIosEye />
       </span>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="element">Details livre</Modal.Title>
+          <Modal.Title className="element">Emprunts</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {emprunts.map((emprunt) => (
@@ -60,7 +61,7 @@ function UserEmprunts({ id, user }) {
                   <span>date fin :</span> {emprunt.dateFin}
                 </div>
               </div>
-              <Emprunteur idUser={emprunt.idUser} />
+              <Emprunteur idUser={emprunt.idUser} idLivre={emprunt.idLivre} />
             </div>
           ))}
         </Modal.Body>

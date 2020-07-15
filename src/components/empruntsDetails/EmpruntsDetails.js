@@ -8,6 +8,7 @@ function EmpruntsDetails({ id, emprunts }) {
   const [show, setShow] = useState(false);
   //  const [LivreEmprunts, setLivreEmprunts] = useState(emprunts);
 
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -31,12 +32,12 @@ function EmpruntsDetails({ id, emprunts }) {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title className="element">Details livre</Modal.Title>
+          <Modal.Title className="element">Details emprunts</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {emprunts.map(
             (emprunt) =>
-              emprunt.id === id && (
+              emprunt.idLivre == id && (
                 <div key={emprunt.id}>
                   <div
                     className={`detailEmprunt ${

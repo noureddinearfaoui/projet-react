@@ -14,8 +14,9 @@ function ModalUpdateLivre({
   toast,
   livres,
   setLivres,
+  updateLivre
 }) {
-  const updateLivre = (
+  /*const updateLivre = (
     id,
     libelle,
     auteur,
@@ -35,7 +36,7 @@ function ModalUpdateLivre({
 
     livres.map((livre) => console.log(newLivres));
     livres.map((livre) => console.log(livres));
-  };
+  };*/
 
   const [show, setShow] = useState(false);
 
@@ -55,7 +56,6 @@ function ModalUpdateLivre({
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         setImage(reader.result);
-        console.log(imageLivre);
         updateLivre(
           id,
           libelleToUpdate,
@@ -67,7 +67,7 @@ function ModalUpdateLivre({
       };
       reader.onerror = () => alert("errpr");
     } else {
-      console.log(imageLivre);
+      alert("error");
     }
 
     setShow(false);

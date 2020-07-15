@@ -17,6 +17,7 @@ function LivreElement({
   emprunts,
   livres,
   setLivres,
+  updateLivre
 }) {
   const [libelleToUpdate] = useState(livre.libelle);
   const [auteursToUpdate] = useState(livre.auteur);
@@ -58,6 +59,7 @@ function LivreElement({
             toast={toast}
             toastError={toastError}
             emprunts={emprunts}
+            idUser= {userAuth.id}
           />
 
           <EmpruntsDetails id={livre.id} emprunts={emprunts} />
@@ -79,6 +81,7 @@ function LivreElement({
               livres={livres}
               setLivres={setLivres}
               imageProp={image}
+              updateLivre={updateLivre}
             />
           )}
           {userAuth.role === "admin" && (
